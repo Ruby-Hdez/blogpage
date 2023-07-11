@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const BlogModel =  require('./models/blogs');
 
 
 // importing routes 
@@ -39,7 +38,6 @@ mongoose.connect(dbConnect.url)
         console.log("Connection failed!");
     }
 )
-
 
 
 // run server
