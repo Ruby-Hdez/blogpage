@@ -9,7 +9,7 @@ const BlogModel =  require('./models/blogs');
 // importing routes 
 const indexRouter = require('./routes/index.js');
 const postsRouter = require('./routes/posts.js');
-// const dbConnection = 
+const dbConnect = require('./database/db_connect.js');
 
 
 // set routes & can add suffixes 
@@ -30,6 +30,15 @@ app.use(express.urlencoded({extended: true}));
 
 
 // connect to MongoDB 
+mongoose.set('strictQuery', true);
+mongoose.connect(dbConnect.url)
+    .then(()=>{
+        console.log("Connected to mongodb!");
+    },
+    err=>{
+        console.log("Connection failed!");
+    }
+)
 
 
 
