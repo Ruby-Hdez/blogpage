@@ -10,16 +10,14 @@ const indexRouter = require('./routes/index.js');
 const postsRouter = require('./routes/posts.js');
 const dbConnect = require('./database/db_connect.js');
 
+// set port number 
+dotenv.config();
+const app = express(); 
+const PORT = process.env.PORT || 5000;
 
 // set routes & can add suffixes 
 app.use('/', indexRouter);
 app.use('/blogs', postsRouter);
-
-
-// set port number 
-dotenv.config();
-const app = express();
-const PORT = process.env.PORT || 5000;
 
 
 // middleware 
@@ -32,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 mongoose.set('strictQuery', true);
 mongoose.connect(dbConnect.url)
     .then(()=>{
-        console.log("Connected to mongodb!");
+        console.log("Connected to MongoDB!");
     },
     err=>{
         console.log("Connection failed!");
