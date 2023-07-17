@@ -34,21 +34,20 @@ const blog_create_post = (req, res) => {
     });
 };
 
-// // delete posts 
-// const blog_delete_post = (req, res, next) => {
-//     // what do i put in for params id & user id?!?!? 
-//     Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(
-//       result => {
-//         console.log(result);
-//         if (result.n > 0) {
-//           res.status(200).json({ message: "Deletion successful!" });
-//         } else {
-//             return res.status(401).json({ message: "Not authorized!" });
-//         }
-//       }
-//     );
-//   };
+// delete posts 
+const blog_delete_post = (req, res, next) => {
+    Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(
+      result => {
+        console.log(result);
+        if (result.n > 0) {
+          res.status(200).json({ message: "Deletion successful!" });
+        } else {
+            return res.status(401).json({ message: "Not authorized!" });
+        }
+      }
+    );
+  };
 
 
 
-module.exports = { blog_list_get ,blog_create_post /*, blog_delete_post*/ };
+module.exports = { blog_list_get ,blog_create_post, blog_delete_post};

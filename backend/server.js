@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const BlogModel = require ('./models');
 
 
 // importing routes 
@@ -17,6 +18,8 @@ const PORT = process.env.PORT || 5000;
 
 // set routes & can add suffixes 
 app.use('/', indexRouter);
+
+// adds posts 
 app.use('/blogs', postsRouter);
 
 
